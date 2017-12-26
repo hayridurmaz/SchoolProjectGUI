@@ -49,21 +49,20 @@ public class Department {
 
 	public void listInstructors() {
 		for (int i = 0; i < instructors.size(); i++) {
- 
+
 		}
 
 	}
 
 	public void listsStudents() {
-	//	for (int i = 0; i < students.size(); i++) {
-	//		 System.out.println(i + " : " + students.get(i).toString());  trying out something
-		}
-
-	
+		// for (int i = 0; i < students.size(); i++) {
+		// System.out.println(i + " : " + students.get(i).toString()); trying
+		// out something
+	}
 
 	public void listCourses() {
 		for (int i = 0; i < courses.size(); i++) {
-			 
+
 		}
 
 	}

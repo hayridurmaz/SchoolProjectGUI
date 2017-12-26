@@ -21,9 +21,11 @@ public class Student extends Person {
 	public void dropCourse(Course y) {
 
 	}
-	public void addGrade(GradeItem g){
-		
+
+	public void addGrade(GradeItem g) {
+
 	}
+
 	public GradeItem getGradeItem(String first, String second){
 		return 
 	}
