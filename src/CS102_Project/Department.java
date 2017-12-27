@@ -27,15 +27,16 @@ public class Department {
 	public void assignInstructorToCourse(String iName, String courseId) {
 		Course c = getCourse(courseId);
 		if (c == null) {
-			System.out.println("There is no such course");
+			System.out.println("Course not found: "+courseId);
 			return;
 		}
 		Instructor i = getInstructorByName(iName);
 		if (i == null) {
-			System.out.println("There is no such instructor.");
+			System.out.println("Instructor not found: "+iName);
 			return;
 		}
 		c.setInstructor(i);
+		i.addCourse(c);
 
 	}
 
@@ -77,7 +78,7 @@ public class Department {
 
 	}
 
-	public void listsStudents() {
+	public void listStudents() {
 		System.out.println("Students registered in this department are:");
 		for (Student student : students) {
 			System.out.println(student.toString());

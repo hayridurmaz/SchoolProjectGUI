@@ -23,7 +23,8 @@ public abstract class Person {
 		String formatted = String.format("%04d", idInteger++);
 		String firstName = name.substring(0, name.indexOf(" ")).trim();
 		String lastName = name.substring(name.indexOf(" ") + 1).trim();
-		id = firstName.charAt(0) + lastName.charAt(0) + formatted;
+		id = firstName.substring(0, 1) + lastName.substring(0, 1) + formatted;
+		id = id.toLowerCase();
 		initEmail();
 	}
 

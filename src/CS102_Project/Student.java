@@ -22,12 +22,18 @@ public class Student extends Person {
 	}
 
 	public void registerToCourse(Course x) {
+		if(x.getInstructor()==null){
+			System.out.println("Course not available");
+			return;
+		}
 		enrolledCourses.add(x);
+		x.addStudent(this);
 		// TODO
 	}
 
 	public void dropCourse(Course y) {
 		enrolledCourses.remove(y);
+		y.removeStudent(this);
 		// TODO
 	}
 
@@ -45,8 +51,15 @@ public class Student extends Person {
 	}
 
 	public void listGrades() {
-		for (GradeItem grade : grades) {
-			System.out.println(grade.toString());
+		for (Course course : enrolledCourses) {
+			System.out.print(course.getId()+" grades of Mustafa Caliskan: ");
+			for (GradeItem grade : grades) {
+				if(grade.getCourseId().equals(course.getId())){
+					System.out.print(grade.toString());
+				}			
+			}
+			System.out.println();
 		}
+
 	}
 }
