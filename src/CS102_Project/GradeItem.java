@@ -22,8 +22,9 @@ public class GradeItem {
 	public int getGrade() {
 		return grade;
 	}
-	public String toString(){
-		return ("kekekekeke");//TODO!!
+
+	public String toString() {
+		return "[" + examId + ": " + grade + "]";
 	}
 
 }

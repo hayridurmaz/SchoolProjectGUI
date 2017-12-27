@@ -22,12 +22,12 @@ public class Department {
 
 	public void assignInstructorToCourse(String iName, String courseId) {
 		Course c = getCourse(courseId);
-		if(c==null){
+		if (c == null) {
 			System.out.println("There is no such course");
 			return;
 		}
-		Instructor i =  getInstructorByName(iName);
-		if(i==null){
+		Instructor i = getInstructorByName(iName);
+		if (i == null) {
 			System.out.println("There is no such instructor.");
 			return;
 		}
@@ -36,14 +36,14 @@ public class Department {
 	}
 
 	public void createCourse(String cid, String cname) {
-		Course c = new Course(cid,cname);
+		Course c = new Course(cid, cname);
 		courses.add(c);
 
 	}
 
 	public Course getCourse(String name) {
 		for (Course course : courses) {
-			if(course.getName().equals(name) || course.getId().equals(name))
+			if (course.getName().equals(name) || course.getId().equals(name))
 				return course;
 		}
 		return null;
@@ -57,9 +57,9 @@ public class Department {
 		return students;
 	}
 
-	public Instructor getInstructorByName(String name){
+	public Instructor getInstructorByName(String name) {
 		for (Instructor i : instructors) {
-			if(i.getName().equals(name))
+			if (i.getName().equals(name))
 				return i;
 		}
 		return null;

@@ -19,26 +19,27 @@ public class Student extends Person {
 	}
 
 	public void registerToCourse(Course x) {
-		//TODO
+		// TODO
 	}
 
 	public void dropCourse(Course y) {
-		//TODO
+		// TODO
 	}
 
 	public void addGrade(GradeItem g) {
 		grades.add(g);
 	}
 
-	public GradeItem getGradeItem(String courseId, String examId){
+	public GradeItem getGradeItem(String courseId, String examId) {
 		for (GradeItem grade : grades) {
-			if(grade.getCourseId().equals(courseId) && grade.getExamId().equals(examId)){
+			if (grade.getCourseId().equals(courseId) && grade.getExamId().equals(examId)) {
 				return grade;
 			}
 		}
 		return null;
 	}
-	public void listGrades(){
+
+	public void listGrades() {
 		for (GradeItem grade : grades) {
 			grade.toString();
 		}
