@@ -21,18 +21,32 @@ public class Department {
 	}
 
 	public void assignInstructorToCourse(String iName, String courseId) {
-		// todo
+		Course c = getCourse(courseId);
+		if(c==null){
+			System.out.println("There is no such course");
+			return;
+		}
+		Instructor i =  getInstructorByName(iName);
+		if(i==null){
+			System.out.println("There is no such instructor.");
+			return;
+		}
+		c.setInstructor(i);
 
 	}
 
 	public void createCourse(String cid, String cname) {
-
-		// todo
+		Course c = new Course(cid,cname);
+		courses.add(c);
 
 	}
 
 	public Course getCourse(String name) {
-		return
+		for (Course course : courses) {
+			if(course.getName().equals(name) || course.getId().equals(name))
+				return course;
+		}
+		return null;
 	}
 
 	public List<Instructor> getInstructors() {
@@ -44,25 +58,32 @@ public class Department {
 	}
 
 	public Instructor getInstructorByName(String name){
-		return
+		for (Instructor i : instructors) {
+			if(i.getName().equals(name))
+				return i;
+		}
+		return null;
 	}
 
 	public void listInstructors() {
-		for (int i = 0; i < instructors.size(); i++) {
-
+		System.out.println("Instructors registered in this department are:");
+		for (Instructor instructor : instructors) {
+			System.out.println(instructor.toString());
 		}
 
 	}
 
 	public void listsStudents() {
-		// for (int i = 0; i < students.size(); i++) {
-		// System.out.println(i + " : " + students.get(i).toString()); trying
-		// out something
+		System.out.println("Students registered in this department are:");
+		for (Student student : students) {
+			System.out.println(student.toString());
+		}
 	}
 
 	public void listCourses() {
-		for (int i = 0; i < courses.size(); i++) {
-
+		System.out.println("Courses given by this department are:");
+		for (Course course : courses) {
+			System.out.println(course.toString());
 		}
 
 	}

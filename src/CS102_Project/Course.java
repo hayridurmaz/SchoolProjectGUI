@@ -1,5 +1,6 @@
 package CS102_Project;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Course {
@@ -11,15 +12,16 @@ public class Course {
 	public Course(String id, String name) {
 		this.id = id;
 		this.name = name;
+		students = new ArrayList<Student>();
 	}
 
 	public void addStudent(Student x) {
 		students.add(x);
 	}
 
-	public void removeStudent(Student y){
-        students.remove(y);
-}
+	public void removeStudent(Student y) {
+		students.remove(y);
+	}
 
 	public String getId() {
 		return id;
@@ -40,11 +42,15 @@ public class Course {
 	public void setInstructor(Instructor instructor) {
 		this.instructor = instructor;
 	}
-	public void listStudents (){
-		
+
+	public void listStudents() {
+		for (Student student : students) {
+			student.toString();
+		}
 	}
-	public String toString(){
-		return ("course");
+
+	public String toString() {
+		return id+" "+name;
 	}
-	
+
 }

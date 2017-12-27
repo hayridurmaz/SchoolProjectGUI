@@ -23,7 +23,7 @@ public class GradeItem {
 		return grade;
 	}
 	public String toString(){
-		return ("kekekekeke");
+		return ("kekekekeke");//TODO!!
 	}
 
 }
