@@ -1,4 +1,4 @@
-package CS102_Project;
+package Model;
 
 import java.util.Random;
 

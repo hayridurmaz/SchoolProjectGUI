@@ -1,4 +1,4 @@
-package CS102_Project;
+package Model;
 
 public abstract class Person {
 	private String id;
