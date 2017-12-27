@@ -1,5 +1,6 @@
 package CS102_Project;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Student extends Person {
@@ -8,6 +9,8 @@ public class Student extends Person {
 
 	public Student(String name) {
 		super(name);
+		enrolledCourses = new ArrayList<>();
+		grades = new ArrayList<>();
 	}
 
 	public void initEmail() {
@@ -19,10 +22,12 @@ public class Student extends Person {
 	}
 
 	public void registerToCourse(Course x) {
+		enrolledCourses.add(x);
 		// TODO
 	}
 
 	public void dropCourse(Course y) {
+		enrolledCourses.remove(y);
 		// TODO
 	}
 
@@ -41,7 +46,7 @@ public class Student extends Person {
 
 	public void listGrades() {
 		for (GradeItem grade : grades) {
-			grade.toString();
+			System.out.println(grade.toString());
 		}
 	}
 }

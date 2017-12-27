@@ -45,7 +45,7 @@ public class Course {
 
 	public void listStudents() {
 		for (Student student : students) {
-			student.toString();
+			System.out.println(student.toString());
 		}
 	}
 

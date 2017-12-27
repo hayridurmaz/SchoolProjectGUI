@@ -1,5 +1,6 @@
 package CS102_Project;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Department {
@@ -10,6 +11,9 @@ public class Department {
 
 	public Department(String name) {
 		this.name = name;
+		courses = new ArrayList<>();
+		instructors = new ArrayList<>();
+		students = new ArrayList<>();
 	}
 
 	public void addInstructor(String name) {
