@@ -7,6 +7,14 @@ import java.util.Random;
 public class Instructor extends Person {
 	List<Course> courses;
 
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
+
 	public Instructor(String name) {
 		super(name);
 		courses = new ArrayList<>();

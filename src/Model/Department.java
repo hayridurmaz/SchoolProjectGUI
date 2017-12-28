@@ -64,7 +64,7 @@ public class Department {
 
 	public Instructor getInstructorByName(String name) {
 		for (Instructor i : instructors) {
-			if (i.getName().equals(name))
+			if (i.getName().equalsIgnoreCase(name))
 				return i;
 		}
 		return null;

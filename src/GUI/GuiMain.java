@@ -18,7 +18,7 @@ public class GuiMain {
 		Department myDepartment = createDepartment();
 
 		// This is where you instantiate an object from login screen class
-		new Login(myDepartment);
+		new Login(myDepartment).setVisible(true);
 
 	}
 
