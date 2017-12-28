@@ -33,19 +33,19 @@ public class Instructor extends Person {
 	}
 
 	public void registerExamGrades(String courseId, String examId) {
-		boolean hasCourseInst=false;
+		boolean hasCourseInst = false;
 		for (Course course : courses) {
-			if(course.getId().equals(courseId)){
-				hasCourseInst=true;
+			if (course.getId().equals(courseId)) {
+				hasCourseInst = true;
 				for (Student student : course.getStudents()) {
 					student.addGrade(new GradeItem(courseId, examId, (new Random().nextInt(100))));
 				}
-			}			
+			}
 		}
-		if(!hasCourseInst){
-			System.out.println("Instructor "+this.getName()+" cannot grade the course "+courseId);
+		if (!hasCourseInst) {
+			System.out.println("Instructor " + this.getName() + " cannot grade the course " + courseId);
 		}
-		
+
 		// TODO
 	}
 
@@ -53,7 +53,7 @@ public class Instructor extends Person {
 		System.out.println(courseId + " " + examId + " grades are:");
 		for (Course course : courses) {
 			for (Student student : course.getStudents()) {
-				System.out.println(student.getName()+": "+student.getGradeItem(courseId, examId).toString());
+				System.out.println(student.getName() + ": " + student.getGradeItem(courseId, examId).toString());
 			}
 		}
 		// TODO
@@ -71,7 +71,8 @@ public class Instructor extends Person {
 		System.out.println(courseId + " " + examId + " avarage grade is: " + ((double) sum / count));
 		// TODO
 	}
-	public String toString(){
-		return getId()+", "+getName()+", "+getEmail();
+
+	public String toString() {
+		return getId() + ", " + getName() + ", " + getEmail();
 	}
 }

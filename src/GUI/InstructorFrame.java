@@ -32,10 +32,11 @@ public class InstructorFrame extends JFrame {
 			JPanel panel1 = new JPanel();
 			tabbedPane.addTab(course.getId(), panel1);
 		}
-		/*JPanel panel1 = new JPanel();
-		JPanel panel2 = new JPanel();
-		tabbedPane.addTab("Panel 1", panel1);
-		tabbedPane.addTab("Panel 2", panel2);*/
+		/*
+		 * JPanel panel1 = new JPanel(); JPanel panel2 = new JPanel();
+		 * tabbedPane.addTab("Panel 1", panel1); tabbedPane.addTab("Panel 2",
+		 * panel2);
+		 */
 		////////////////////////////////////
 
 		this.add(tabbedPane);

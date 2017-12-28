@@ -63,19 +63,17 @@ public class Login extends JFrame {
 		emailTextField.setBounds(125, 99, 152, 22);
 		panel.add(emailTextField);
 		emailTextField.setColumns(10);
-		
+
 		JTextPane errorTextPane = new JTextPane();
 		errorTextPane.setBounds(107, 165, 223, 30);
 		panel.add(errorTextPane);
-		
 
 		JButton loginButton = new JButton("LOGIN");
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (emailTextField.getText().equalsIgnoreCase("reyyan.yeniterzi@ozyegin.edu.tr")) {
 					new InstructorFrame(department.getInstructorByName("Reyyan Yeniterzi")).setVisible(true);
-				}
-				else{
+				} else {
 					errorTextPane.setText("Wrong mail adress");
 				}
 			}
@@ -88,7 +86,6 @@ public class Login extends JFrame {
 		txtpnEmail.setText("Email:");
 		txtpnEmail.setBounds(78, 99, 47, 22);
 		panel.add(txtpnEmail);
-		
-		
+
 	}
 }
