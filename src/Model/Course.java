@@ -3,6 +3,12 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+
 public class Course {
 	private String id;
 	private String name;
@@ -47,6 +53,13 @@ public class Course {
 		for (Student student : students) {
 			System.out.println(student.toString());
 		}
+	}
+	public void listStudents(JTextPane tf) {
+		String str="";
+		for (Student student : students) {
+			str+=student.toString()+"\n";
+		}
+		tf.setText(str);
 	}
 
 	public String toString() {

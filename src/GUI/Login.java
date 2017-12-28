@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -63,10 +64,7 @@ public class Login extends JFrame {
 		emailTextField.setBounds(125, 99, 152, 22);
 		panel.add(emailTextField);
 		emailTextField.setColumns(10);
-
-		JTextPane errorTextPane = new JTextPane();
-		errorTextPane.setBounds(107, 165, 223, 30);
-		panel.add(errorTextPane);
+		
 
 		JButton loginButton = new JButton("LOGIN");
 		loginButton.addActionListener(new ActionListener() {
@@ -74,7 +72,7 @@ public class Login extends JFrame {
 				if (emailTextField.getText().equalsIgnoreCase("reyyan.yeniterzi@ozyegin.edu.tr")) {
 					new InstructorFrame(department.getInstructorByName("Reyyan Yeniterzi")).setVisible(true);
 				} else {
-					errorTextPane.setText("Wrong mail adress");
+					JOptionPane.showMessageDialog(null, "User does not exist", "Error", 0);
 				}
 			}
 		});
@@ -85,6 +83,7 @@ public class Login extends JFrame {
 		txtpnEmail.setBackground(SystemColor.control);
 		txtpnEmail.setText("Email:");
 		txtpnEmail.setBounds(78, 99, 47, 22);
+		txtpnEmail.setEditable(false);
 		panel.add(txtpnEmail);
 
 	}
