@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -123,6 +124,7 @@ public class InstructorFrame extends JFrame {
 					JButton btnSave = new JButton("Save");
 					btnSave.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
+							ArrayList<Integer> grades = new ArrayList<>();
 							for (JTextField studentGradeTF : textFields) {
 								int grade;
 								if (!isNumeric(studentGradeTF.getText())) {
@@ -138,12 +140,15 @@ public class InstructorFrame extends JFrame {
 									JOptionPane.showMessageDialog(null, "Please enter an exam id", "Error", 0);
 									return;
 								}
-								instructor.registerExamGrades(course.getId(), examidtf.getText(), grade);
+								grades.add(grade);
+
 							}
+							instructor.registerExamGrades(course.getId(), examidtf.getText(), grades);
 							JOptionPane.showMessageDialog(null, "Exam grades are added", "Added", 1);
-							//System.out.println(course.getId());
-							//System.out.println(examidtf.getText());
-							//instructor.listGradesForExam(course.getId(), examidtf.getText());
+							// System.out.println(course.getId());
+							// System.out.println();
+							// instructor.listGradesForExam(course.getId(),
+							// examidtf.getText());
 						}
 					});
 					btnSave.setBounds(444, 291, 97, 25);
@@ -164,6 +169,80 @@ public class InstructorFrame extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					panel_1.removeAll();
+
+					JLabel lblStudents = new JLabel("Students:");
+					lblStudents.setBounds(12, 13, 84, 16);
+					panel_1.add(lblStudents);
+
+					int y1 = 60;
+					for (Student s : course.getStudents()) {
+						JLabel labelStudent = new JLabel("<html><p>" + s.toString() + "</p></html>");
+						labelStudent.setBounds(12, y1, 250, 40);
+						panel_1.add(labelStudent);
+						int x2 = 290;
+						// System.out.println(s.getGradeItem(course.getId(),
+						// "1").toString());
+						// System.out.println("****"+s.getGradeItemsOfACourse(course.getId()).size());
+
+						for (GradeItem g : s.getGradeItemsOfACourse(course.getId())) {
+							// System.out.println(g.toString());
+							// labelStudent.setText(labelStudent.getText()+"\t"+g.toString());
+							// JLabel labelGrade= new JLabel("<html><p>" +
+							// g.getGrade() + "</p></html>");
+							// labelStudent.setBounds(x2, y1, 150, 40);
+							// panel_1.add(labelGrade);
+							if (s.getId() == course.getStudents().get(0).getId()) {
+								JTextArea textID = new JTextArea();
+								textID.append("ID: ");
+								textID.setBounds(12, y1 - 20, 30, 40);
+								textID.setEditable(false);
+								textID.setOpaque(false);
+								textID.setFont(labelStudent.getFont());
+								panel_1.add(textID);
+
+								JTextArea textexamId = new JTextArea();
+								textexamId.append(g.getExamId() + "");
+								textexamId.setBounds(x2, y1 - 20, 30, 40);
+								textexamId.setEditable(false);
+								textexamId.setOpaque(false);
+								textexamId.setFont(labelStudent.getFont());
+								panel_1.add(textexamId);
+
+							}
+							if(s.getId()==course.getStudents().get(course.getStudents().size()-1).getId()){
+								JTextArea textID = new JTextArea();
+								textID.append("Avarage: ");
+								textID.setForeground(Color.RED);
+								textID.setBounds(12, y1 + 50, 60, 40);
+								textID.setEditable(false);
+								textID.setOpaque(false);
+								textID.setFont(labelStudent.getFont());
+								panel_1.add(textID);
+
+								JTextArea textexamId = new JTextArea();
+								textexamId.append(instructor.getAvarage(course.getId(), g.getExamId())+"");
+								textexamId.setForeground(Color.RED);
+								textexamId.setBounds(x2, y1 + 50, 30, 40);
+								textexamId.setEditable(false);
+								textexamId.setOpaque(false);
+								textexamId.setFont(labelStudent.getFont());
+								panel_1.add(textexamId);
+							}
+
+							JTextArea textArea = new JTextArea();
+							textArea.append(g.getGrade() + "");
+							textArea.setBounds(x2, y1 + 10, 30, 40);
+							textArea.setEditable(false);
+							textArea.setOpaque(false);
+							textArea.setFont(labelStudent.getFont());
+							panel_1.add(textArea);
+							x2 += 40;
+						}
+						panel_1.add(labelStudent);
+
+						y1 += 40;
+
+					}
 
 					panel_1.revalidate();
 					panel_1.repaint();

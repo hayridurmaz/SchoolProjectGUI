@@ -49,6 +49,18 @@ public class Student extends Person {
 		}
 		return null;
 	}
+	
+	public ArrayList<GradeItem> getGradeItemsOfACourse(String courseId) {
+		ArrayList<GradeItem> gradearr = new ArrayList<>();
+		for (GradeItem grade : grades) {
+//			System.out.println("+"+courseId);
+//			System.out.println("-"+grade.getCourseId());
+			if (grade.getCourseId().equals(courseId)) {
+				 gradearr.add(grade);
+			}
+		}
+		return gradearr;
+	}
 
 	public void listGrades() {
 		for (Course course : enrolledCourses) {

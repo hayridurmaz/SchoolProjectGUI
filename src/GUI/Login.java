@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Model.Department;
+import Model.Instructor;
+
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -69,8 +71,10 @@ public class Login extends JFrame {
 		JButton loginButton = new JButton("LOGIN");
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (emailTextField.getText().equalsIgnoreCase("reyyan.yeniterzi@ozyegin.edu.tr")) {
-					new InstructorFrame(department.getInstructorByName("Reyyan Yeniterzi")).setVisible(true);
+				String mail = emailTextField.getText();
+				Instructor ins = department.getInstructorByEmail(mail);
+				if (ins!=null) {
+					new InstructorFrame(ins).setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(null, "User does not exist", "Error", 0);
 				}

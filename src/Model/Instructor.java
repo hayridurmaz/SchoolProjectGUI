@@ -51,13 +51,15 @@ public class Instructor extends Person {
 		// TODO
 	}
 
-	public void registerExamGrades(String courseId, String examId, int grade) {
+	public void registerExamGrades(String courseId, String examId, ArrayList<Integer> grade) {
 		boolean hasCourseInst = false;
 		for (Course course : courses) {
 			if (course.getId().equals(courseId)) {
 				hasCourseInst = true;
+				int i=0;
 				for (Student student : course.getStudents()) {
-					student.addGrade(new GradeItem(courseId, examId, grade));
+					student.addGrade(new GradeItem(courseId, examId, grade.get(i)));
+					i++;
 				}
 			}
 		}
@@ -93,6 +95,25 @@ public class Instructor extends Person {
 			}
 		}
 		System.out.println(courseId + " " + examId + " avarage grade is: " + ((double) sum / count));
+		// TODO
+	}
+	
+	public double getAvarage(String courseId, String examId) {
+		int sum = 0;
+		int count = 0;
+		for (Course course : courses) {
+			for (Student student : course.getStudents()) {
+//				System.out.println(courseId);
+//				System.out.println(examId);
+
+				if(student.getGradeItem(courseId, examId)!=null){
+					sum += student.getGradeItem(courseId, examId).getGrade();
+					count++;
+				}
+			
+			}
+		}
+		return ((double) sum / count);
 		// TODO
 	}
 

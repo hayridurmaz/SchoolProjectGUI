@@ -69,6 +69,13 @@ public class Department {
 		}
 		return null;
 	}
+	public Instructor getInstructorByEmail(String mail) {
+		for (Instructor i : instructors) {
+			if (i.getEmail().equalsIgnoreCase(mail))
+				return i;
+		}
+		return null;
+	}
 
 	public void listInstructors() {
 		System.out.println("Instructors registered in this department are:");

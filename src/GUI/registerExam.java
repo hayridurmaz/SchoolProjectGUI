@@ -11,11 +11,11 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
 
 public class registerExam extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField examidtf;
 
 	/**
 	 * Launch the application.
@@ -38,14 +38,14 @@ public class registerExam extends JFrame {
 	 */
 	public registerExam() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 607, 430);
+		setBounds(12, 53, 765, 451);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(5, 5, 572, 35);
+		panel.setBounds(206, 5, 379, 35);
 		contentPane.add(panel);
 		
 		JButton button = new JButton("List Students");
@@ -58,25 +58,16 @@ public class registerExam extends JFrame {
 		panel.add(button_2);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(5, 53, 572, 317);
+		panel_1.setBounds(5, 53, 742, 338);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblEnterExamId = new JLabel("Enter exam id:");
+		JLabel lblEnterExamId = new JLabel("Student:");
 		lblEnterExamId.setBounds(12, 13, 84, 16);
 		panel_1.add(lblEnterExamId);
 		
-		examidtf = new JTextField();
-		examidtf.setBounds(444, 13, 116, 22);
-		panel_1.add(examidtf);
-		examidtf.setColumns(10);
-		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnNewButton.setBounds(394, 251, 97, 25);
-		panel_1.add(btnNewButton);
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(222, 65, 147, 119);
+		panel_1.add(textArea);
 	}
 }
