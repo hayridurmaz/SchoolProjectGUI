@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 public class Instructor extends Person {
 	List<Course> courses;
 
@@ -44,6 +46,24 @@ public class Instructor extends Person {
 		}
 		if (!hasCourseInst) {
 			System.out.println("Instructor " + this.getName() + " cannot grade the course " + courseId);
+		}
+
+		// TODO
+	}
+	
+	public void registerExamGrades(String courseId, String examId, int grade) {
+		boolean hasCourseInst = false;
+		for (Course course : courses) {
+			if (course.getId().equals(courseId)) {
+				hasCourseInst = true;
+				for (Student student : course.getStudents()) {
+					student.addGrade(new GradeItem(courseId, examId, grade));
+				}
+			}
+		}
+		if (!hasCourseInst) {
+			System.out.println("Instructor " + this.getName() + " cannot grade the course " + courseId);
+			JOptionPane.showMessageDialog(null, "Instructor " + this.getName() + " cannot grade the course " + courseId, "Error", 0);
 		}
 
 		// TODO
