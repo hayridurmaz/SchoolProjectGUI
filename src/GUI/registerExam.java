@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class registerExam extends JFrame {
 
@@ -68,5 +70,13 @@ public class registerExam extends JFrame {
 		examidtf.setBounds(444, 13, 116, 22);
 		panel_1.add(examidtf);
 		examidtf.setColumns(10);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnNewButton.setBounds(394, 251, 97, 25);
+		panel_1.add(btnNewButton);
 	}
 }

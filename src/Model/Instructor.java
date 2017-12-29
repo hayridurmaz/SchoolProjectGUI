@@ -50,7 +50,7 @@ public class Instructor extends Person {
 
 		// TODO
 	}
-	
+
 	public void registerExamGrades(String courseId, String examId, int grade) {
 		boolean hasCourseInst = false;
 		for (Course course : courses) {
@@ -63,7 +63,8 @@ public class Instructor extends Person {
 		}
 		if (!hasCourseInst) {
 			System.out.println("Instructor " + this.getName() + " cannot grade the course " + courseId);
-			JOptionPane.showMessageDialog(null, "Instructor " + this.getName() + " cannot grade the course " + courseId, "Error", 0);
+			JOptionPane.showMessageDialog(null, "Instructor " + this.getName() + " cannot grade the course " + courseId,
+					"Error", 0);
 		}
 
 		// TODO
@@ -72,9 +73,12 @@ public class Instructor extends Person {
 	public void listGradesForExam(String courseId, String examId) {
 		System.out.println(courseId + " " + examId + " grades are:");
 		for (Course course : courses) {
-			for (Student student : course.getStudents()) {
-				System.out.println(student.getName() + ": " + student.getGradeItem(courseId, examId).toString());
+			if (course.getId().equals(courseId)) {
+				for (Student student : course.getStudents()) {
+					System.out.println(student.getName() + ": " + student.getGradeItem(courseId, examId).toString());
+				}
 			}
+
 		}
 		// TODO
 	}

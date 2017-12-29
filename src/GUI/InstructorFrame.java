@@ -21,6 +21,7 @@ import Model.Student;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class InstructorFrame extends JFrame {
@@ -44,7 +45,7 @@ public class InstructorFrame extends JFrame {
 		// You won't use this particular code.
 		// You need to modify it
 		// Just use it as an example to create course tabbedpanes.
-		ArrayList<JPanel> jpanels = new ArrayList<>();
+		// ArrayList<JPanel> jpanels = new ArrayList<>();
 		for (Course course : instructor.getCourses()) {
 			JPanel panel = new JPanel();
 			panel.setLayout(null);
@@ -87,7 +88,8 @@ public class InstructorFrame extends JFrame {
 			btnRegisterExamGrades.addActionListener(new ActionListener() {
 
 				@Override
-				public void actionPerformed(ActionEvent e) {//Register exam grade birmedi!!!!
+				public void actionPerformed(ActionEvent e) {// Register exam
+															// grade birmedi!!!!
 					panel_1.removeAll();
 
 					JLabel lblEnterExamId = new JLabel("Enter exam id:");
@@ -103,11 +105,8 @@ public class InstructorFrame extends JFrame {
 					panel_1.add(examidtf);
 					examidtf.setColumns(10);
 
-					if (examidtf.getText() == null || examidtf.getText().trim().length() == 0) {
-						JOptionPane.showMessageDialog(null, "Please enter an exam id", "Error", 0);
-					}
-
 					int y1 = 60;
+					ArrayList<JTextField> textFields = new ArrayList<>();
 					for (Student s : course.getStudents()) {
 						JLabel labelStudent = new JLabel("<html><p>" + s.toString() + "</p></html>");
 						labelStudent.setBounds(12, y1, 250, 40);
@@ -118,18 +117,37 @@ public class InstructorFrame extends JFrame {
 						panel_1.add(studentGradeTF);
 						studentGradeTF.setColumns(10);
 						y1 += 40;
-						int grade;
-						if (!isNumeric(studentGradeTF.getText())) {
-							JOptionPane.showMessageDialog(null, "Please enter valid grade", "Error", 0);
-							return;
-						}
-						grade = Integer.parseInt(studentGradeTF.getText());
-						if (grade > 100 || grade < 0) {
-							JOptionPane.showMessageDialog(null, "Please enter valid grade", "Error", 0);
-							return;
-						}
-						instructor.registerExamGrades(course.getId(), s.getId(), grade);
+						textFields.add(studentGradeTF);
+
 					}
+					JButton btnSave = new JButton("Save");
+					btnSave.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent arg0) {
+							for (JTextField studentGradeTF : textFields) {
+								int grade;
+								if (!isNumeric(studentGradeTF.getText())) {
+									JOptionPane.showMessageDialog(null, "Please enter valid grade", "Error", 0);
+									return;
+								}
+								grade = Integer.parseInt(studentGradeTF.getText());
+								if (grade > 100 || grade < 0) {
+									JOptionPane.showMessageDialog(null, "Please enter valid grade", "Error", 0);
+									return;
+								}
+								if (examidtf.getText() == null || examidtf.getText().trim().length() == 0) {
+									JOptionPane.showMessageDialog(null, "Please enter an exam id", "Error", 0);
+									return;
+								}
+								instructor.registerExamGrades(course.getId(), examidtf.getText(), grade);
+							}
+							JOptionPane.showMessageDialog(null, "Exam grades are added", "Added", 1);
+							//System.out.println(course.getId());
+							//System.out.println(examidtf.getText());
+							//instructor.listGradesForExam(course.getId(), examidtf.getText());
+						}
+					});
+					btnSave.setBounds(444, 291, 97, 25);
+					panel_1.add(btnSave);
 
 					// TODO
 					panel_1.revalidate();
